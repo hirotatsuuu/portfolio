@@ -1,7 +1,7 @@
-# Portfolio
+# portfolio
 
 hirotatsuuu のポートフォリオサイトです。
-[https://hirotatsuuu.github.io/Portfolio/](https://hirotatsuuu.github.io/Portfolio/)
+[https://hirotatsuuu.github.io/portfolio/](https://hirotatsuuu.github.io/portfolio/)
 
 ## 開発環境
 * Framework: Astro
@@ -73,7 +73,7 @@ pnpm install
 ```powershell
 pnpm run dev
 ```
-起動後、ブラウザで http://localhost:4321/Portfolio/ にアクセスしてください。
+起動後、ブラウザで http://localhost:4321/portfolio/ にアクセスしてください。
 
 ## ビルド
 ```powershell
