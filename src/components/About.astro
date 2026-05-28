@@ -1,20 +1,35 @@
 ---
-// 1. Astro公式の Image コンポーネントをインポート
 import { Image } from 'astro:assets';
-// 2. 管理フォルダから画像をインポート
-import profileImage from '../assets/profile.png';
+import profileImage from '../assets/profile.jpg';
+import { ja } from '../data/ja.js';
+import { en } from '../data/en.js';
 ---
+
 <section id="about" class="section">
   <div class="container">
-    <h2 class="section-title">ABOUT</h2>
+    <h2 class="section-title lang-ja">{ja.about.title}</h2>
+    <h2 class="section-title lang-en">{en.about.title}</h2>
+    
     <div class="about-grid">
-      <div class="about-image-wrapper">
-        <Image src={profileImage} alt="Profile" class="about-image" width={320} height={320} />
+      <div class="about-image-outer">
+        <div class="about-image-wrapper">
+          <Image src={profileImage} alt="Otatsu" class="about-image" width={320} height={320} />
+        </div>
       </div>
-      <div class="about-text">
-        <h3>ひろと / Hiroto</h3> <p class="lead">ここにあなたの肩書きやキャッチコピーを1行で書きます。</p> <p>
-          ここに簡単な自己紹介文を記述してください。趣味、得意なこと、現在学んでいることなど自由に書くことができます。
-        </p> </div>
+      
+      <div class="about-text-container">
+        <div class="about-text lang-ja">
+          <h3>{ja.about.name}</h3>
+          <p class="lead">{ja.about.lead}</p>
+          <p class="desc">{ja.about.desc}</p>
+        </div>
+        
+        <div class="about-text lang-en">
+          <h3>{en.about.name}</h3>
+          <p class="lead">{en.about.lead}</p>
+          <p class="desc">{en.about.desc}</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -23,45 +38,62 @@ import profileImage from '../assets/profile.png';
   .about-grid {
     display: grid;
     grid-template-columns: 320px 1fr;
-    gap: 64px;
+    gap: 60px;
     align-items: center;
   }
-  
-  /* ⬇︎ ここを丸型用にシンプルに修正 */
-  .about-image-wrapper {
+  .about-image-outer {
+    position: relative;
     width: 320px;
     height: 320px;
-    border-radius: 50%; /* これだけで綺麗な正円になります */
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
   }
-  
-  /* ⬇︎ 回転の補正（rotate）を消してスッキリさせました */
+  .about-image-outer::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color-primary);
+    border-radius: 24px;
+    z-index: 1;
+  }
+  .about-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    z-index: 2;
+  }
   .about-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
+    transition: var(--transition);
   }
-  
-  /* マウスを乗せたときに少しだけフワッと拡大する演出 */
   .about-image:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
-
   .about-text h3 {
-    font-size: 2rem;
-    color: var(--color-dark);
+    font-size: 2.2rem;
+    font-weight: 800;
     margin-bottom: 8px;
   }
   .about-text .lead {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 600;
     color: var(--color-primary);
     margin-bottom: 20px;
   }
+  .about-text .desc {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    white-space: pre-line;
+  }
 
-  @media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr; justify-items: center; gap: 32px; text-align: center; }
+  @media (max-width: 992px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .about-image-outer { margin: 0 auto; }
   }
 </style>

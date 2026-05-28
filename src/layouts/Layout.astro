@@ -1,86 +1,126 @@
 ---
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
+import { ja } from '../data/ja.js';
+import { en } from '../data/en.js';
+import '../styles/global.css';
 ---
 
-<html lang="ja">
+<!DOCTYPE html>
+<html lang="ja" data-lang="ja">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap](https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap)" rel="stylesheet">
+    
+    <title id="site-title" data-ja={ja.title} data-en={en.title}></title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">OTATSU</a>
+        <button id="lang-toggle-btn" class="lang-switcher">
+          <span class="lang-icon">🌐</span>
+          <span id="lang-btn-text" data-ja="English" data-en="日本語">English</span>
+        </button>
+      </div>
+    </nav>
+
     <slot />
+
+    <script>
+      // 要素を安全に取得（HTML5の要素型、または null を許容）
+      const htmlEl = document.documentElement;
+      const titleEl = document.getElementById('site-title') as HTMLTitleElement | null;
+      const btnText = document.getElementById('lang-btn-text') as HTMLSpanElement | null;
+      const btn = document.getElementById('lang-toggle-btn') as HTMLButtonElement | null;
+      
+      // 初期言語を取得
+      let currentLang: string = localStorage.getItem('portfolio-lang') || 'ja';
+
+      // 引数 lang に明示的に文字列型 (string) を指定してエラーを回避
+      function toggleLanguage(lang: string): void {
+        htmlEl.setAttribute('data-lang', lang);
+        htmlEl.setAttribute('lang', lang);
+        
+        // titleEl が存在する場合のみ実行
+        if (titleEl) {
+          const newTitle = titleEl.getAttribute(`data-${lang}`);
+          if (newTitle) titleEl.textContent = newTitle;
+        }
+        
+        // btnText が存在する場合のみ実行
+        if (btnText) {
+          const nextLang = lang === 'ja' ? 'ja' : 'en';
+          const newBtnText = btnText.getAttribute(`data-${nextLang}`);
+          if (newBtnText) btnText.textContent = newBtnText;
+        }
+      }
+
+      // 初回読み込み時の実行
+      toggleLanguage(currentLang);
+
+      // ボタンクリック時のイベント
+      btn?.addEventListener('click', () => {
+        currentLang = currentLang === 'ja' ? 'en' : 'ja';
+        localStorage.setItem('portfolio-lang', currentLang);
+        toggleLanguage(currentLang);
+      });
+    </script>
   </body>
 </html>
 
-<style is:global>
-  /* グローバルスタイル */
-  :root {
-    --color-primary: #2563eb;
-    --color-dark: #0f172a;
-    --color-light: #f8fafc;
-    --color-text: #334155;
-    --color-muted: #64748b;
-    --font-base: 'Noto Sans JP', sans-serif;
-    --font-heading: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    font-family: var(--font-base);
-    color: var(--color-text);
-    background-color: #ffffff;
-    line-height: 1.7;
-  }
-
-  .container {
-    max-width: 1000px;
+  .nav-container {
+    max-width: 1140px;
+    height: 100%;
     margin: 0 auto;
     padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-
-  /* セクション共通スタイル */
-  .section {
-    padding: 100px 0;
-  }
-  .section-title {
+  .nav-logo {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
     font-weight: 800;
-    letter-spacing: 0.1em;
+    font-size: 1.3rem;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 8px 16px;
+    border-radius: 30px;
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .lang-switcher:hover {
+    background-color: #ffffff;
     color: var(--color-dark);
-    margin-bottom: 48px;
-    position: relative;
-    display: inline-block;
-  }
-  .section-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 40px;
-    height: 4px;
-    background-color: var(--color-primary);
-  }
-
-  @media (max-width: 768px) {
-    .section { padding: 60px 0; }
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 </style>
