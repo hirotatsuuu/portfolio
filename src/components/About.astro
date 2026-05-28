@@ -1,0 +1,67 @@
+---
+// 1. Astro公式の Image コンポーネントをインポート
+import { Image } from 'astro:assets';
+// 2. 管理フォルダから画像をインポート
+import profileImage from '../assets/profile.png';
+---
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title">ABOUT</h2>
+    <div class="about-grid">
+      <div class="about-image-wrapper">
+        <Image src={profileImage} alt="Profile" class="about-image" width={320} height={320} />
+      </div>
+      <div class="about-text">
+        <h3>ひろと / Hiroto</h3> <p class="lead">ここにあなたの肩書きやキャッチコピーを1行で書きます。</p> <p>
+          ここに簡単な自己紹介文を記述してください。趣味、得意なこと、現在学んでいることなど自由に書くことができます。
+        </p> </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  
+  /* ⬇︎ ここを丸型用にシンプルに修正 */
+  .about-image-wrapper {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%; /* これだけで綺麗な正円になります */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+  
+  /* ⬇︎ 回転の補正（rotate）を消してスッキリさせました */
+  .about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  
+  /* マウスを乗せたときに少しだけフワッと拡大する演出 */
+  .about-image:hover {
+    transform: scale(1.08);
+  }
+
+  .about-text h3 {
+    font-size: 2rem;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+  }
+  .about-text .lead {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; justify-items: center; gap: 32px; text-align: center; }
+  }
+</style>

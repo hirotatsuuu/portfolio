@@ -1,0 +1,43 @@
+---
+---
+<section id="links" class="section">
+  <div class="container text-center">
+    <h2 class="section-title">CONNECT</h2>
+    <p class="section-sub">お気軽にフォロー、またはご連絡ください。</p> <div class="social-links">
+      <a href="[https://x.com/あなたのユーザー名](https://x.com/あなたのユーザー名)" target="_blank" rel="noopener noreferrer" class="social-card"> <span class="social-icon">𝕏</span>
+        <span class="social-name">X (Twitter)</span>
+      </a>
+      <a href="[https://github.com/あなたのユーザー名](https://github.com/あなたのユーザー名)" target="_blank" rel="noopener noreferrer" class="social-card"> <span class="social-icon">🐙</span>
+        <span class="social-name">GitHub</span>
+      </a>
+      <a href="[https://instagram.com/あなたのユーザー名](https://instagram.com/あなたのユーザー名)" target="_blank" rel="noopener noreferrer" class="social-card"> <span class="social-icon">📸</span>
+        <span class="social-name">Instagram</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-center { text-align: center; }
+  .text-center .section-title::after { left: 50%; transform: translateX(-50%); }
+  .section-sub { color: var(--color-muted); margin-top: -32px; margin-bottom: 48px; }
+  .social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .social-card {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    background-color: var(--color-light);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--color-dark);
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  .social-card:hover { transform: translateY(-4px); background-color: #eff6ff; }
+  .social-icon { font-size: 2rem; margin-right: 16px; }
+  .social-name { font-weight: 600; font-size: 1.1rem; }
+</style>

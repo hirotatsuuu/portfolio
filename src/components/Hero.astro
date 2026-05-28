@@ -1,0 +1,75 @@
+---
+---
+<header class="hero">
+  <div class="container">
+    <p class="hero-sub animate-fade-in">Welcome to my portfolio</p>
+    <h1 class="hero-title animate-fade-in-up">HIROTO'S WORKSPACE</h1> <p class="hero-desc animate-fade-in-up-delayed">Web制作、デザイン、日々のクリエイティブをまとめた場所です。</p> <a href="#about" class="btn animate-fade-in-up-delayed2">Discover More</a>
+  </div>
+</header>
+
+<style>
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at 90% 10%, #eff6ff 0%, #ffffff 60%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-sub {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-primary);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--color-dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hero-desc {
+    font-size: 1.25rem;
+    color: var(--color-muted);
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+  .btn {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    background-color: var(--color-dark);
+    color: #ffffff;
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.15);
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(15, 23, 42, 0.25);
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fade-in { animation: fadeIn 1s forwards; }
+  .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .animate-fade-in-up-delayed { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0; }
+  .animate-fade-in-up-delayed2 { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; opacity: 0; }
+
+  @media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+  }
+</style>
