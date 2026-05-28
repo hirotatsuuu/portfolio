@@ -3,22 +3,19 @@
 おたつのポートフォリオサイト
 [https://hirotatsuuu.github.io/portfolio/](https://hirotatsuuu.github.io/portfolio/)
 
+## 概要
+本プロジェクトは、高速でモダンなWebサイト構築を実現する **Astro** を採用したポートフォリオサイトです。コンテンツ駆動型の設計により、保守性と拡張性を高めています。
+
 ## 開発環境
-* Framework: Astro
-* Language: TypeScript
-* Styling: Tailwind CSS
-* Deployment: GitHub Pages (GitHub Actions)
+* **Framework**: [Astro](https://astro.build/) - コンテンツ重視の高速なWebサイトを構築するためのフレームワーク
+* **Language**: TypeScript
+* **Styling**: Tailwind CSS
+* **Deployment**: GitHub Pages (GitHub Actionsによる自動デプロイ)
 
 ## 使用ツールについて
-
-### nvm（Node Version Manager）とは
-Node.jsのバージョンを複数管理するためのツールです。プロジェクトごとに異なるNode.jsのバージョンを簡単に切り替えることができます。
-
-### Corepackとは
-Node.js（v16.13.0以降）に標準で含まれている、パッケージマネージャー（pnpmやYarn）を管理する仕組みです。これを利用することで、npm install -g を使わずに、安全かつプロジェクトに最適なバージョンのpnpmを自動で利用・管理できます。
-
-### pnpmとは
-Node.jsの高速で効率的なパッケージマネージャーです。従来のnpmと比較して、ディスク容量を大幅に節約し、インストール速度が非常に速いという特徴があります。
+* **nvm (Node Version Manager)**: Node.jsのバージョンをプロジェクト単位で柔軟に管理するためのツールです。
+* **Corepack**: pnpmなどのパッケージマネージャーを標準で管理する機能です。`npm install -g` を使用せず、プロジェクトごとに統一された環境を自動構築します。
+* **pnpm**: 高速かつディスク効率に優れたパッケージマネージャーです。従来のnpmと比較してインストール速度と容量削減に優れています。
 
 ## プロジェクト構成
 ```text
