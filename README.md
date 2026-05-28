@@ -1,43 +1,84 @@
-# Astro Starter Kit: Minimal
+# Portfolio
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+hirotatsuuu のポートフォリオサイトです。
+[https://hirotatsuuu.github.io/Portfolio/](https://hirotatsuuu.github.io/Portfolio/)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 開発環境
+* Framework: Astro
+* Language: TypeScript
+* Styling: Tailwind CSS
+* Deployment: GitHub Pages (GitHub Actions)
 
-## 🚀 Project Structure
+## 使用ツールについて
 
-Inside of your Astro project, you'll see the following folders and files:
+### nvm（Node Version Manager）とは
+Node.jsのバージョンを複数管理するためのツールです。プロジェクトごとに異なるNode.jsのバージョンを簡単に切り替えることができます。
 
+### Corepackとは
+Node.js（v16.13.0以降）に標準で含まれている、パッケージマネージャー（pnpmやYarn）を管理する仕組みです。これを利用することで、npm install -g を使わずに、安全かつプロジェクトに最適なバージョンのpnpmを自動で利用・管理できます。
+
+### pnpmとは
+Node.jsの高速で効率的なパッケージマネージャーです。従来のnpmと比較して、ディスク容量を大幅に節約し、インストール速度が非常に速いという特徴があります。
+
+## プロジェクト構成
 ```text
-/
-├── public/
+my-portfolio/
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/       # UI部品（使い回すパーツ）
+│   │   ├── Header.astro  # 共通ヘッダー
+│   │   ├── Footer.astro  # 共通フッター
+│   │   └── Profile.astro # 自己紹介カード
+│   ├── layouts/          # ページ全体の骨組み
+│   │   └── Layout.astro  # headや共通スタイルなど
+│   ├── pages/            # ルーティング（URLになる）
+│   │   ├── index.astro   # トップページ (/)
+│   │   └── about.astro   # 自己紹介ページ (/about)
+│   └── styles/           # グローバルCSS
+│       └── global.css
+├── astro.config.mjs      # デプロイ設定など
+└── package.json          # pnpm管理
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 開発・実行方法
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### 1. wingetによるnvmのインストールとNode.jsの準備
 
-Any static assets, like images, can be placed in the `public/` directory.
+Windowsの管理者権限でPowerShellまたはコマンドプロンプトを開き、以下のコマンドを実行してnvm（nvm-windows）をインストールします。
 
-## 🧞 Commands
+```powershell
+winget install CoreyButler.NVMforWindows
+```
 
-All commands are run from the root of the project, from a terminal:
+インストール完了後、環境変数を反映させるために**端末（PowerShellなど）を一度完全に閉じて、再度開き直してください。**
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+端末を開き直したら、以下のコマンドでNode.jsのLTS（推奨版）をインストールして有効化します。
+```powershell
+nvm install lts
+nvm use lts
+```
 
-## 👀 Want to learn more?
+### 2. pnpmの有効化（Corepackの利用）
+Node.js環境が用意できたら、標準搭載されているCorepackを有効化し、pnpmを使用可能な状態にします。
+```powershell
+corepack enable
+corepack prepare pnpm@latest --activate
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### 3. 依存関係のインストール
+```powershell
+pnpm install
+```
+
+### 4. ローカルサーバーの起動
+```powershell
+pnpm run dev
+```
+起動後、ブラウザで http://localhost:4321/Portfolio/ にアクセスしてください。
+
+## ビルド
+```powershell
+pnpm run build
+```
+
+## ライセンス
+MIT
