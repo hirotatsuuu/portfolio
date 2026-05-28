@@ -1,24 +1,28 @@
-# build output
+# ノード依存関係（pnpm / npm）
+node_modules/
+.pnpm-debug.log*
+
+# ビルド成果物（Astroの出力フォルダ）
 dist/
-# generated types
+
+# Astroのキャッシュや自動生成ファイル
 .astro/
 
-# dependencies
-node_modules/
+# 環境変数ファイル（パスワードやAPIキーなどの機密情報）
+.env
+.env.production
+*.local
 
-# logs
+# nvm / 開発環境関連
+.node-version
+.nvmrc
+
+# ログファイル
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
+# エディタ設定（不要な場合は無視してOK）
+.vscode/
 .DS_Store
-
-# jetbrains setting folder
-.idea/
+Thumbs.db
