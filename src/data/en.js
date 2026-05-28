@@ -1,14 +1,14 @@
 export const en = {
   title: "Otatsu | Cycling Around the World",
   hero: {
-    sub: "Welcome to my portfolio",
-    title: "OTATSU'S WORKSPACE",
+    sub: "Welcome",
+    title: "OTATSU'S PORTFOLIO",
     desc: "World Traveler. This is the place where I compile my journey and daily activities.",
     btn: "Discover More"
   },
   about: {
     title: "ABOUT",
-    name: "Otatsu",
+    name: "Otatsu / @otatsu1522",
     lead: "World Traveler. From hitchhiking & penniless journeys to cycling around the globe.",
     desc: "Starting with a hitchhiking trip around Japan in 2018, I have traveled the world in various ways. After working holidays, penniless continental crossings, and cycling all over Japan, I am currently challenging myself to cycle around the world. The encounters and harsh roads I experience everywhere are the driving force behind my creativity."
   },
@@ -51,6 +51,11 @@ export const en = {
         desc: "The starting point of all my travels. Connected Japan step by step while experiencing human kindness."
       }
     ]
+  },
+  youtube: {
+    title: "YouTube Channel",
+    desc: "I post tech tutorials and development logs.",
+    btn: "Visit Channel"
   },
   connect: {
     title: "CONNECT",

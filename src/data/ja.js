@@ -1,14 +1,14 @@
 export const ja = {
   title: "おたつ | 自転車世界一周の軌跡",
   hero: {
-    sub: "Welcome to my portfolio",
-    title: "OTATSU'S WORKSPACE",
+    sub: "ようそこ",
+    title: "おたつのぽーとふぉりお",
     desc: "世界を巡る旅人。これまでの軌跡と日々の活動をまとめた場所です。",
     btn: "Discover More"
   },
   about: {
     title: "ABOUT",
-    name: "おたつ / Otatsu",
+    name: "おたつ / @otatsu1522",
     lead: "世界を巡る旅人。ヒッチハイク、無一文横断、そして自転車世界一周へ。",
     desc: "2018年のヒッチハイク日本一周を皮切りに、世界中を様々な方法で旅してきました。ワーキングホリデー、資金ゼロからの海外大陸横断、日本全土を駆ける自転車旅を経て、現在は自転車での世界一周に挑戦しています。各地での出会いや過酷な道のり、そのすべてが私のクリエイティブの原動力です。"
   },
@@ -51,6 +51,11 @@ export const ja = {
         desc: "すべての旅の原点。人の温かさに触れながら、一歩一歩日本を繋いだ1ヶ月。"
       }
     ]
+  },
+  youtube: {
+    title: "YouTube チャンネル",
+    desc: "技術的なチュートリアルや開発の記録を投稿しています。",
+    btn: "チャンネルを見る"
   },
   connect: {
     title: "CONNECT",

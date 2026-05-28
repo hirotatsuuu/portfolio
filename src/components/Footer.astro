@@ -5,8 +5,14 @@
     <h2 class="cta-title">Thank you for visiting.</h2> <p class="cta-desc">最後までご覧いただきありがとうございました。これからも新しいことに挑戦し、発信を続けていきます。</p> </div>
 </section>
 
+<footer class="footer">
+  <div class="container">
+    <p>&copy; {new Date().getFullYear()} Hiroto. All rights reserved.</p>
+  </div>
+</footer>
+
 <footer>
-  <p>&copy; {new Date().getFullYear()} Hiroto. All rights reserved.</p>
+  <p></p>
 </footer>
 
 <style>
@@ -26,11 +32,12 @@
     max-width: 600px;
     margin: 0 auto;
   }
-  footer {
+  .footer {
     padding: 40px 0;
     text-align: center;
-    font-size: 0.9rem;
-    color: var(--color-muted);
-    border-top: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+    color: #64748b; /* --color-muted相当 */
+    border-top: 1px solid #e2e8f0; /* --color-border相当 */
+    margin-top: 80px;
   }
 </style>

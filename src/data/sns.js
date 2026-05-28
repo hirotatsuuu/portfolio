@@ -1,5 +1,11 @@
 export const snsLinks = [
   {
+    name: "YouTube",
+    user: "@otatsu1522",
+    url: "https://www.youtube.com/@otatsu1522",
+    icon: "▶"
+  },
+  {
     name: "X (Twitter)",
     user: "@otatsu1522",
     url: "https://x.com/otatsu1522",
