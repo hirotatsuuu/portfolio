@@ -1,8 +1,8 @@
 ---
 import { ja } from '../data/ja.js';
 import { en } from '../data/en.js';
-import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
+import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
@@ -19,48 +19,29 @@ import Navbar from '../components/Navbar.astro';
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
-    <Navbar/>
-
+    <Navbar />
     <slot />
-
-    <script>
-      // 要素を安全に取得（HTML5の要素型、または null を許容）
-      const htmlEl = document.documentElement;
-      const titleEl = document.getElementById('site-title') as HTMLTitleElement | null;
-      const btnText = document.getElementById('lang-btn-text') as HTMLSpanElement | null;
-      const btn = document.getElementById('lang-toggle-btn') as HTMLButtonElement | null;
-      
-      // 初期言語を取得
-      let currentLang: string = localStorage.getItem('portfolio-lang') || 'ja';
-
-      // 引数 lang に明示的に文字列型 (string) を指定してエラーを回避
-      function toggleLanguage(lang: string): void {
-        htmlEl.setAttribute('data-lang', lang);
-        htmlEl.setAttribute('lang', lang);
-        
-        // titleEl が存在する場合のみ実行
-        if (titleEl) {
-          const newTitle = titleEl.getAttribute(`data-${lang}`);
-          if (newTitle) titleEl.textContent = newTitle;
-        }
-        
-        // btnText が存在する場合のみ実行
-        if (btnText) {
-          const nextLang = lang === 'ja' ? 'ja' : 'en';
-          const newBtnText = btnText.getAttribute(`data-${nextLang}`);
-          if (newBtnText) btnText.textContent = newBtnText;
-        }
-      }
-
-      // 初回読み込み時の実行
-      toggleLanguage(currentLang);
-
-      // ボタンクリック時のイベント
-      btn?.addEventListener('click', () => {
-        currentLang = currentLang === 'ja' ? 'en' : 'ja';
-        localStorage.setItem('portfolio-lang', currentLang);
-        toggleLanguage(currentLang);
-      });
-    </script>
   </body>
 </html>
+
+<style is:global>
+  /* 全体の余白リセット（白帯対策） */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --color-dark: #0f172a;
+    --transition: all 0.3s ease;
+  }
+  
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: var(--color-dark);
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>

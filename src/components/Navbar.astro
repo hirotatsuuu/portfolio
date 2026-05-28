@@ -4,7 +4,7 @@
   <div class="nav-container">
     <a href="/" class="nav-logo">OTATSU</a>
     <button id="lang-toggle-btn" class="lang-switcher">
-      <span>🌐</span>
+      <span class="lang-icon">🌐</span>
       <span id="lang-btn-text" data-ja="English" data-en="日本語">English</span>
     </button>
   </div>
@@ -31,12 +31,10 @@
     justify-content: space-between;
   }
   .nav-logo {
-    font-family: var(--font-heading);
     font-weight: 800;
     font-size: 1.3rem;
     color: #ffffff;
     text-decoration: none;
-    letter-spacing: 0.05em;
   }
   .lang-switcher {
     display: inline-flex;
@@ -48,21 +46,11 @@
     border-radius: 30px;
     color: #ffffff;
     font-family: var(--font-heading);
-    font-size: 0.9rem;
-    font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
-  }
-  .lang-switcher:hover {
-    background-color: #ffffff;
-    color: var(--color-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 </style>
 
 <script>
-  // ロジックをここに集約
   const htmlEl = document.documentElement;
   const btn = document.getElementById('lang-toggle-btn');
   const btnText = document.getElementById('lang-btn-text');
@@ -78,9 +66,11 @@
     }
   }
 
+  // 初期化
   const savedLang = localStorage.getItem('portfolio-lang') || 'ja';
   updateLanguage(savedLang);
 
+  // イベント
   btn?.addEventListener('click', () => {
     const current = htmlEl.getAttribute('data-lang') || 'ja';
     const next = current === 'ja' ? 'en' : 'ja';
