@@ -1,6 +1,7 @@
 # ノード依存関係（pnpm / npm）
 node_modules/
 .pnpm-debug.log*
+pnpm-workspace.yaml
 
 # ビルド成果物（Astroの出力フォルダ）
 dist/
